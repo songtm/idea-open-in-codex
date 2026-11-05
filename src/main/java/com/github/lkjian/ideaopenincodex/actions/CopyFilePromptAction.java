@@ -42,7 +42,11 @@ public final class CopyFilePromptAction extends AnAction {
             return;
         }
 
-        LineRange lineRange = resolveLineRange(event.getData(CommonDataKeys.EDITOR));
+        copyPrompt(file, event.getData(CommonDataKeys.EDITOR));
+    }
+
+    static void copyPrompt(VirtualFile file, Editor editor) {
+        LineRange lineRange = resolveLineRange(editor);
         String prompt = CodexMessages.filePrompt(file.getPath(), lineRange.toDisplayText());
 
         // 仅写入剪贴板，避免触发 Codex 桌面端协议。
