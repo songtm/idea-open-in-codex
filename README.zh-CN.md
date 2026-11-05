@@ -1,10 +1,10 @@
 # Open In Codex
 
-这是一个 IntelliJ IDEA 插件，用于从 IDEA 中把当前项目或当前文件位置打开到新的 Codex 桌面端会话。
+这是一个 IntelliJ IDEA 插件，用于将当前项目或文件位置交给 Codex 桌面端。
 
 ## 功能
 
-- `Open File In Codex`：打开新的 Codex 会话，并带上当前项目路径、当前文件路径以及选中的行号范围；如果没有选中文本，则使用当前光标所在行。
+- `Open File In Codex` 将文件路径和行号复制到剪贴板。在 Windows 上，插件会尝试切换到已打开的 Codex 窗口，等待快捷键松开后发送 Ctrl+V。没有选区时使用光标所在行。
 - `Copy File Prompt`：把与文件打开功能相同的当前文件路径和行号范围提示词复制到剪贴板，但不打开 Codex；可从编辑器和项目视图右键菜单使用。
 - `Open Project In Codex`：打开新的 Codex 会话，并把当前项目路径作为 Codex 工作目录，同时附带当前项目路径提示词。
 
@@ -80,9 +80,7 @@ codex://new?path=<项目路径>&prompt=<提示词>
 文件入口生成的提示词格式：
 
 ```text
-请查看当前文件：
-文件：D:\path\to\File.java
-行号：24-27
+@D:/path/to/File.java#L24-27
 ```
 
 Windows 下会通过 PowerShell 调用 `Start-Process` 打开 Codex 桌面端协议。
